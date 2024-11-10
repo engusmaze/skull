@@ -1,0 +1,27 @@
+[package]
+name = "skull-editor"
+version = "0.1.0"
+edition = "2021"
+authors = ["EngusMaze"]
+description = "Simple Kool Ultra Lightweight Line editor"
+tags = ["skull", "text", "editor"]
+repository = "https://github.com/engusmaze/skull"
+homepage = "https://github.com/engusmaze/skull"
+license = "Apache-2.0 OR MIT"
+readme = "README.md"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+strip = true
+opt-level = "s"
+panic = "abort"
+
+[profile.release.package."*"]
+opt-level = "s"
+
+[dependencies]
+anyhow = "1.0.93"
+clap = { version = "4.5.20", features = ["derive"] }
+crossterm = "0.28.1"
+unicode-width = "0.2.0"
